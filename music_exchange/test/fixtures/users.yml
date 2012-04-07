@@ -1,11 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  username: MyString
   name: MyString
-  cell: MyString
-  comment: MyString
+  surname: MyString
+  password: MyString
+  email: MyString
+  about: MyString
 
 two:
+  username: MyString
   name: MyString
-  cell: MyString
-  comment: MyString
+  surname: MyString
+  password: MyString
+  email: MyString
+  about: MyString
