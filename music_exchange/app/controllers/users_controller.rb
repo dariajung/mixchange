@@ -82,4 +82,13 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      redirect_to users_url, :notice => "Signed up!"
+    else
+      render "new"
+    end
+  end
 end
