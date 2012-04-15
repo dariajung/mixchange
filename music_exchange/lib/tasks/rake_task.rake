@@ -1,6 +1,6 @@
 namespace :movies do
 	desc "Takes in the user ratings of 10 movies and outputs the top three movies"
-	
+
 	task :give_top_three do
 		puts "starting to read in the CSV file"
 		require 'csv'
@@ -27,15 +27,9 @@ namespace :movies do
 		order = movies.sort{|a,b| a[1]<=>b[1]}
 		#puts order
 
-<<<<<<< HEAD
-		order[0..2].each {|elem|
-			puts "#{elem[0]}"
-		}
-=======
 		order[0..2].each do |elem|
 			puts  "#{elem[0]}"
 		end
->>>>>>> 09efba406c24e45a698bb6236307e53b580c13de
 
 	end
 end
