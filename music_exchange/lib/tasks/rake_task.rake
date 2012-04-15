@@ -27,9 +27,15 @@ namespace :movies do
 		order = movies.sort{|a,b| a[1]<=>b[1]}
 		#puts order
 
+<<<<<<< HEAD
 		order[0..2].each {|elem|
 			puts "#{elem[0]}"
 		}
+=======
+		order[0..2].each do |elem|
+			puts  "#{elem[0]}"
+		end
+>>>>>>> 09efba406c24e45a698bb6236307e53b580c13de
 
 	end
 end
