@@ -1,7 +1,11 @@
 MusicExchange::Application.routes.draw do
   root :to => 'sessions#new'
 
-  resources :events
+  resources :events do
+    member do
+      get 'rank'
+    end
+  end
 
   resources :cds
 

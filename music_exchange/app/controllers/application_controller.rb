@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
-  before_filter :require_user
-
   def home
   		render :template => 'hello_world'
   	end
+
+  protect_from_forgery
+  before_filter :require_user
 
 force_ssl
 
