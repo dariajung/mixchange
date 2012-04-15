@@ -1,4 +1,7 @@
 class CdsController < ApplicationController
+  
+  http_basic_authenticate_with :name => "Daria", :password => "earlgreyisthebesttea"
+  
   # GET /cds
   # GET /cds.json
   def index

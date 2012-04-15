@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  http_basic_authenticate_with :name => "Daria", :password => "earlgreyisthebesttea",:except => [:new]
+
   # GET /users
   # GET /users.json
   def index

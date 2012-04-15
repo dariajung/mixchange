@@ -1,9 +1,9 @@
-<h1>Listing cds</h1>
+<h1>Listing CDs</h1>
 
 <table>
   <tr>
-    <th>Album_name</th>
-    <th>Artist</th>
+    <th>Album Name</th>
+    <th>Artist/Mixer</th>
     <th></th>
     <th></th>
   </tr>
@@ -14,11 +14,11 @@
     <td><%= cd.artist %></td>
     <td><%= link_to 'Show', cd %></td>
     <td><%= link_to 'Edit', edit_cd_path(cd) %></td>
-    <td><%= link_to 'Destroy', cd, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Delete', cd, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Cd', new_cd_path %>
+<%= link_to 'New CD', new_cd_path %>

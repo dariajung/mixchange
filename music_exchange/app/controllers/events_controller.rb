@@ -1,11 +1,14 @@
 class EventsController < ApplicationController
+
+  http_basic_authenticate_with :name => "Daria", :password => "earlgreyisthebesttea"
+
   # GET /events
   # GET /events.json
   def index
     @events = Event.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html
       format.json { render json: @events }
     end
   end
@@ -27,7 +30,7 @@ class EventsController < ApplicationController
     @event = Event.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html #{ notice: 'An event was successfully created'} # new.html.erb
       format.json { render json: @event }
     end
   end

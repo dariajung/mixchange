@@ -1,4 +1,6 @@
 MusicExchange::Application.routes.draw do
+  #root :to => "sessions#new"
+
   resources :events
 
   resources :cds
