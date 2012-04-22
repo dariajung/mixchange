@@ -10,8 +10,8 @@
               <li><%= link_to "Sign Up", '/signup' %><li>
             </ul>
             <ul class="nav pull-left">
-           	 <li><%= link_to "Events", '/events' %></li>
-             <li><%= link_to "CDs", '/cds' %></li>
+           	 <li><%= (@current_user ? (link_to "Events", '/events'): "") %></li>
+             <li><%= (@current_user ? (link_to "CDs", '/cds'): "") %></li>
             </ul>
           </nav>
         </div>
