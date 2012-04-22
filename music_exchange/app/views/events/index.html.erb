@@ -1,25 +1,4 @@
 <h1>Listing Events</h1>
 
-<table>
-  <tr>
-    <th>Location</th>
-    <th>Start</th>
-    <th>End</th>
-    <th></th>
-  </tr>
-
-<% @events.each do |event| %>
-  <tr>
-    <td><%= event.location %></td>
-    <td><%= event.start %></td>
-    <td><%= event.end %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Delete', event, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Event', new_event_path %>
+<%= render :partial => "event", :collection => @events %>
+<p><%= link_to 'New Event', new_event_path %></p>

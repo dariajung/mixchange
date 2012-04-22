@@ -1,10 +1,11 @@
 class ApplicationController < ActionController::Base
   def home
   		render :template => 'hello_world'
-  	end
+  end
 
-  protect_from_forgery
-  before_filter :require_user
+ protect_from_forgery
+ #skip_before_filter :require_user, :only => [:new, :create]
+ before_filter :require_user
 
 force_ssl
 
@@ -12,12 +13,13 @@ private
 
 def current_user
 	@current_user ||= User.find(session[:user_id]) if session[:user_id]
+	@test ||= "test!"
 end
 
 def require_user
 	unless current_user
 		flash[:notice] = "You need to be logged in to see this page."
-		redirect_to signin_url
+		redirect_to login_url
 		return false
 	end
 end

@@ -1,31 +1,12 @@
-<%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= semantic_form_for(@event) do |f| %>
+  <%= f.inputs do %>
+    <%=f.input :location, :as => :wrapped_string %>
+    <%=f.input :start_time, :as => :datetime %> 
+    <%=f.input :end_time, :as => :datetime %>
   <% end %>
-
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :start %><br />
-    <%= f.date_select :start %>
-  </div>
-  <div class="field">
-    <%= f.label :end %><br />
-    <%= f.date_select :end %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :button %>
+  <% end %>
 <% end %>
 
 <div class="field">
@@ -33,5 +14,6 @@
   <% Cd.all.each do |cd| %>
     <%= cd.album_name %> <!--label for the checkbox-->
     <%= check_box_tag :cd_ids, cd.id, @event.cds.include?(cd), :name => 'event[cd_ids][]'%><br />
+  </div>
   <% end %>
-</div>
+  

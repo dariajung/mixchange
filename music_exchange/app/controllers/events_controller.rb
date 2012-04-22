@@ -1,7 +1,5 @@
 class EventsController < ApplicationController
 
-  http_basic_authenticate_with :name => "Daria", :password => "earlgreyisthebesttea"
-
   # GET /events
   # GET /events.json
   def index
@@ -11,6 +9,9 @@ class EventsController < ApplicationController
       format.html # index.html
       format.json { render json: @events }
     end
+  end
+
+  def rank
   end
 
   # GET /events/1

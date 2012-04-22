@@ -11,8 +11,8 @@ MusicExchange::Application.routes.draw do
 
   resources :users
 
-  match 'signin' => 'sessions#new'
-  match 'signout' => 'sessions#destroy'
+  match 'login' => 'sessions#new'
+  match 'logout' => 'sessions#destroy'
   match 'signup' => 'users#new'
 
   match 'home' => 'Application#home'

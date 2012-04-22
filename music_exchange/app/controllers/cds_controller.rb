@@ -1,7 +1,5 @@
 class CdsController < ApplicationController
   
-  http_basic_authenticate_with :name => "Daria", :password => "earlgreyisthebesttea"
-  
   # GET /cds
   # GET /cds.json
   def index
@@ -63,7 +61,7 @@ class CdsController < ApplicationController
 
     respond_to do |format|
       if @cd.update_attributes(params[:cd])
-        format.html { redirect_to @cd, notice: 'Cd was successfully updated.' }
+        format.html { redirect_to @cd, notice: 'CD was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
