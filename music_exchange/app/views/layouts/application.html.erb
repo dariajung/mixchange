@@ -5,15 +5,15 @@
   <title><%= h(yield(:title) || "Music Exchange") %></title>  
   <%= stylesheet_link_tag 'application', 'formtastic', 'formtastic_changes' %> 
   <%= javascript_include_tag "application" %>
-  <%= yield :head %>  
+  <%= yield :header %>  
 </head>  
 </head>
 <body>
-<%= render 'layouts/header' %>
+<%= render 'shared/header' %>
     <div class="container">
-<%= render 'layouts/footer' %>
-	<div class="container">
 <%= yield %>
+<%= render 'shared/footer' %>
+</div> 
 
 </body>
 </html>
