@@ -14,7 +14,7 @@
     <td><%= cd.artist %></td>
     <td><%= link_to 'Show', cd %></td>
     <td><%= link_to 'Edit', edit_cd_path(cd) %></td>
-    <td><%= link_to 'Delete', cd, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= button_to 'Delete', cd, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
