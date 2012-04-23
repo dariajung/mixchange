@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   end
 
  protect_from_forgery
- #skip_before_filter :require_user, :only => [:new, :create]
  before_filter :require_user
 
 force_ssl
@@ -13,7 +12,6 @@ private
 
 def current_user
 	@current_user ||= User.find(session[:user_id]) if session[:user_id]
-	@test ||= "test!"
 end
 
 def require_user

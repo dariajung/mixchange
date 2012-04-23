@@ -14,13 +14,6 @@ class User < ActiveRecord::Base
 
 	validates :username, :uniqueness => true
 
-	validate :password_cannot_be_blank
-	def password_cannot_be_blank
-		if password.blank?
-			errors.add(:password, "Please enter a password.")
-		end
-	end
-
 	validate :email_cannot_be_blank
 	def email_cannot_be_blank
 		if email.blank?

@@ -5,13 +5,12 @@
           <nav>
             <ul class="nav pull-right">
               <li><%= (@current_user ? (link_to @current_user.email, '/users/' + session[:user_id].to_s + '/edit') : "") %></li>
-              <li><%= link_to "Log In", '/login' %></li>
               <li><%= (@current_user ? (link_to "Logout", '/logout'): "" ) %></li>
               <li><%= link_to "Sign Up", '/signup' %><li>
             </ul>
             <ul class="nav pull-left">
-           	 <li><%= (@current_user ? (link_to "Events", '/events'): "") %></li>
-             <li><%= (@current_user ? (link_to "CDs", '/cds'): "") %></li>
+           	 <li><%= link_to "Events", '/events' %></li>
+             <li><%= link_to "CDs", '/cds' %></li>
             </ul>
           </nav>
         </div>
