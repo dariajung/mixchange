@@ -5,6 +5,7 @@
   <title><%= h(yield(:title) || "Music Exchange") %></title>  
   <%= stylesheet_link_tag 'application', 'formtastic', 'formtastic_changes' %> 
   <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
   <%= yield :header %>  
 </head>  
 </head>
