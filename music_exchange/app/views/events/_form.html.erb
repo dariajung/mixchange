@@ -9,11 +9,10 @@
   <% end %>
 <% end %>
 
-<div class="field">
+
   Suggested Music:<br /><br />
   <% Cd.all.each do |cd| %>
     <%= cd.album_name %> <!--label for the checkbox-->
-    <%= check_box_tag :cd_ids, cd.id, @event.cds.include?(cd), :name => 'event[cd_ids][]'%><br />
-  </div>
+    <%= check_box_tag :cd_ids, cd.id, @event.cds.include?(cd), :name => 'event[cd_ids][]'%><br/>
   <% end %>
-  
+  <br>
