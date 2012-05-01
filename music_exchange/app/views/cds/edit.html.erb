@@ -1,6 +1,5 @@
-<h1>Editing CD</h1>
+<h1>Editing CD <%= link_to @cd.album_name, @cd %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @cd %> |
 <%= link_to 'Back', cds_path %>

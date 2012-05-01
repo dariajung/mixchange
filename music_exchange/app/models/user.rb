@@ -4,6 +4,11 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates_presence_of :password, :on => :create
 
+	has_many :events
+	has_many :suggestions
+	has_many :invitations, :dependent => :destroy
+	has_many :events, :through => :invitations
+
 	validates_format_of :email, :with => 
 	/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
 

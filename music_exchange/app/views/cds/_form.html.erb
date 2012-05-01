@@ -1,10 +1,9 @@
 <%= semantic_form_for(@cd) do |f| %>
   <%= f.inputs do %>
-    <%=f.inputs :album_name, :artist %>
+    <%=f.input :album_name, :as => :wrapped_string %>
+    <%=f.input :artist, :as => :wrapped_string %> 
   <% end %>
   <%= f.actions do %>
-    <%= f.action :submit %>
+    <%= f.action :submit, :as => :button %>
   <% end %>
 <% end %>
-
-

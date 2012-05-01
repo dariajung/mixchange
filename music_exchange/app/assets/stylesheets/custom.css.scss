@@ -47,6 +47,15 @@ textarea {
 
 }
 
+.user {
+  font-family:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+home {
+ font-family:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+ font-size: 1.1em;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -71,6 +80,17 @@ h2 {
   text-align: center;
   font-weight: normal;
   color: #999;
+}
+
+h3 {
+  font-family:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 2.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: left;
+  font-weight: normal;
+  color: #999;
+  
 }
 
 p {

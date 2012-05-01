@@ -1,10 +1,19 @@
 class Event < ActiveRecord::Base
- 
-	#has_secure_password
-	#validates_presence_of :password, :on => :create
 
 	has_many :suggestions, :dependent => :destroy
 	has_many :cds, :through => :suggestions
+
+	has_many :invitations, :dependent => :destroy
+	has_many :users, :through => :invitations
+
+
+	def rankings(user)
+   	 return Ranking.where(:suggestion_id => self.suggestions.collect(&:id), :guest_id => user.id)
+  	end
+  
+  	def top_three_rankings
+
+  	end
 
 	validate :location_cannot_be_blank
 	def location_cannot_be_blank

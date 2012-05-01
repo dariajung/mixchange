@@ -1,20 +1,34 @@
 <p id="notice"><%= notice %></p>
+<p></p>
+  <b>Event Name:</b>
+  <%= @event.event_name %>
 
-<p>
+
+<p></p>
   <b>Location:</b>
   <%= @event.location %>
-</p>
 
-<p>
+
+<p></p>
   <b>Start:</b>
   <%= @event.start_time %>
-</p>
 
-<p>
+
+<p></p>
   <b>End:</b>
   <%= @event.end_time %>
-</p>
 
+<br>
+<br>
 
+<b>Suggested Music:</b><br/>
+	<% for cd in @event.cds %>
+		<%= cd.album_name %> - <%= cd.artist %>
+		<br/>
+	<% end %>
+<br>
+
+<%= link_to 'Suggest Music', suggest_event_url(@event) %> |
+<%= link_to 'Rank Music', rank_event_url(@event) %> |
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

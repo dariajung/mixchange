@@ -1,24 +1,4 @@
 <h1>Listing CDs</h1>
 
-<table>
-  <tr>
-    <th>Album Name</th>
-    <th>Artist/Mixer</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @cds.each do |cd| %>
-  <tr>
-    <td><%= cd.album_name %></td>
-    <td><%= cd.artist %></td>
-    <td><%= link_to 'Show', cd %></td>
-    <td><%= link_to 'Edit', edit_cd_path(cd) %></td>
-    <td><%= button_to 'Delete', cd, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New CD', new_cd_path %>
+<%= render :partial => "cd", :collection => @cds %>
+<p></p><%= link_to 'New CD', new_cd_path %>

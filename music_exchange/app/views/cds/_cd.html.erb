@@ -1,0 +1,6 @@
+<p></p><b>LP/EP/Mix Name:</b> <%= link_to cd.album_name, cd %>
+<p></p><b>Artist:</b> <%= cd.artist %>
+<p></p>
+<%= link_to 'Edit', edit_cd_path(cd) %>
+<%= link_to 'Delete', cd_path(cd), confirm: 'Are you sure?', method: :delete %>
+<br></br>

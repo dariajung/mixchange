@@ -1,0 +1,24 @@
+
+<h1><%= link_to @event.event_name, @event %></h1>
+<%= semantic_form_for :suggestions, :url => rank_event_url(@event), :html => {:method => :post} do |f| %>
+
+	S U G G E S T E D ♫ M U S I C:<br ></ br ><br>
+	<%= f.inputs do %>
+		<% @event.suggestions.each do |suggestion| %>
+
+			<%= ranking = Ranking.where(:suggestion_id => suggestion.id, :guest_id => current_user.id).first %>
+
+			<%= f.input "#{suggestion.id}", :as => :select, :collection => 1..@event.suggestions.length, :selected => ranking.nil? ? '' : ranking.position, :label => suggestion.cd.album_name, :include_blank => false %>
+			<% end %>
+		<% end %>
+
+		<% f.actions do %>
+
+			<%= f.action :submit, :as => :button, :label => "Rank" %>
+			<% end %>
+
+		<% end %>
+
+		<%= link_to 'Back', events_path %>
+
+

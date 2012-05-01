@@ -1,7 +1,7 @@
 <header class="navbar navbar-top">
       <div class="navbar-inner">
         <div class="container">
-          <%= link_to "Music Exchange", '/home', id: "logo" %>
+          <%= link_to "Mixchange", '/home', id: "logo" %>
           <nav>
             <ul class="nav pull-right">
               <li><%= (@current_user ? (link_to @current_user.email, '/users/' + session[:user_id].to_s + '/edit') : "") %></li>

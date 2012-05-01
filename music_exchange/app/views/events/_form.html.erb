@@ -1,5 +1,6 @@
 <%= semantic_form_for(@event) do |f| %>
   <%= f.inputs do %>
+    <%=f.input :event_name, :as => :wrapped_string %>
     <%=f.input :location, :as => :wrapped_string %>
     <%=f.input :start_time, :as => :datetime %> 
     <%=f.input :end_time, :as => :datetime %>

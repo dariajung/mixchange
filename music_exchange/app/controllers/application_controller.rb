@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
  protect_from_forgery
  before_filter :require_user
+ before_filter :authenticate_admin
 
 force_ssl
 
@@ -23,6 +24,20 @@ def require_user
 end
 
 helper_method :current_user
+
+def is_admin?
+	current_user.role == 1
 end
+
+def authenticate_admin
+	unless is_admin?
+		return false
+	end
+end
+
+helper_method :is_admin?
+
+end
+
 
 

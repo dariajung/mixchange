@@ -5,6 +5,8 @@ MusicExchange::Application.routes.draw do
     member do
       get 'rank'
       post 'rank'
+      get 'suggest'
+      post 'suggest'
     end
   end
 

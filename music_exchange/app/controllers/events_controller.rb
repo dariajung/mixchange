@@ -12,8 +12,41 @@ class EventsController < ApplicationController
   end
 
   def rank
+    @event = Event.find(params[:id])
+
+    if params[:suggestions]
+      for suggestion in @event.suggestions
+
+        ranking = Ranking.where(:suggestion_id => suggestion.id, :guest_id => current_user.id).first
+
+        if ranking
+          if params[:suggestions][suggestion.id.to_s]
+            ranking.position = params[:suggestions][suggestion.id_to_s]
+          else
+            ranking.position = 0
+          end
+          ranking.save
+        else
+          ranking = Ranking.create(:suggestion_id => suggestion.id, guest_id => current_user.id, :position => params[:suggestions][suggestions.id.to_s])
+        end
+      end
+      redirect_to event_path(@event)
+    end
   end
 
+  def suggest
+    @event = Event.find(params[:id])
+
+    if params[:suggestions] and params[:suggestions][:cds]
+      for id in params[:suggestions][:cds]
+       unless id.blank?
+       cd = Cd.find(id)
+       @event.cds << cd
+      end
+    end
+   end
+  end
+  
   # GET /events/1
   # GET /events/1.json
   def show
