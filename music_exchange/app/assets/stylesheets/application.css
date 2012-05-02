@@ -10,22 +10,20 @@
  *
  *= require_self
  *= require_tree .
-*/
 
-<pre>
   # app/assets/stylesheets/application.css
   *= require formtastic
-  *= require my_formtastic_changes
+  *= require formtastic_changes
 
   # app/assets/stylesheets/ie6.css
   *= require formtastic_ie6
 
   # app/assets/stylesheets/ie7.css
   *= require formtastic_ie7
-</pre>
-<pre>
+
+*/
+
+
   # app/views/layouts/application.html.erb
-  <%= stylesheet_link_tag 'application' %>
   <!--[if IE 6]><%= stylesheet_link_tag 'ie6' %><![endif]-->
   <!--[if IE 7]><%= stylesheet_link_tag 'ie7' %><![endif]-->
-</pre>

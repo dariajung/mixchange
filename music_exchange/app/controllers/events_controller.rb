@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+  skip_before_filter :authenticate_admin, :only => [:index, :show, :rank, :suggest]
+
   # GET /events
   # GET /events.json
   def index
@@ -17,7 +19,7 @@ class EventsController < ApplicationController
     if params[:suggestions]
       for suggestion in @event.suggestions
 
-        ranking = Ranking.where(:suggestion_id => suggestion.id, :guest_id => current_user.id).first
+        ranking = Ranking.where(:suggestion_id => suggestion.id, :user_id => current_user.id).first
 
         if ranking
           if params[:suggestions][suggestion.id.to_s]
@@ -27,7 +29,7 @@ class EventsController < ApplicationController
           end
           ranking.save
         else
-          ranking = Ranking.create(:suggestion_id => suggestion.id, guest_id => current_user.id, :position => params[:suggestions][suggestions.id.to_s])
+          ranking = Ranking.create(:suggestion_id => suggestion.id, :user_id => current_user.id, :position => params[:suggestions][suggestion.id.to_s])
         end
       end
       redirect_to event_path(@event)
@@ -41,7 +43,7 @@ class EventsController < ApplicationController
       for id in params[:suggestions][:cds]
        unless id.blank?
        cd = Cd.find(id)
-       @event.cds << cd
+       @event.cds << cd unless @event.cds.include? cd
       end
     end
    end

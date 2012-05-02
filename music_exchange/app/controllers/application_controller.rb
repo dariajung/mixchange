@@ -26,11 +26,13 @@ end
 helper_method :current_user
 
 def is_admin?
-	current_user.role == 1
+	logger.warn(current_user.role == true)
+	current_user.role == true
 end
 
 def authenticate_admin
 	unless is_admin?
+		redirect_to events_url
 		return false
 	end
 end

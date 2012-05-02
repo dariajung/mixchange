@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 <h3>Currently Viewing User <%= @user.email %></h3>
 
-<%= render 'form' %>
+<%= semantic_form_for(@user) do |f| %>
+  <%= f.inputs do %>
+    <%=f.inputs :email, :name, :surname, :username, :about %>
+    <%end%>
+<%end%>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %> 

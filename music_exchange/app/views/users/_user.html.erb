@@ -1,10 +1,11 @@
 <div class ="user">
-<p><b>Name:</b> <%= link_to user.name, user %></p>
-<p><b>Surname:</b> <%= user.surname %></p>
-<p><b>Username:</b> <%= user.username %></p>
-<p><b>Email:</b> <%= user.email %></p>
-<p><b>About:</b> <%= user.about %></p>
-<%= link_to 'Edit', edit_user_path(user) %>
+<p></p><b>Name:</b> <%= link_to user.name, user %>
+<p></p><b>Surname:</b> <%= user.surname %>
+<p></p><b>Username:</b> <%= user.username %>
+<p></p><b>Email:</b> <%= user.email %>
+<p></p><b>About:</b> <%= user.about %>
+<p></p>
+<%= link_to 'Edit', edit_user_path(user) %> |
 <%= link_to 'Delete', user, :confirm => "Are you sure?", :method => :delete %>
 
 <br></br>
