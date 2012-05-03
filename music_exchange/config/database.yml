@@ -3,8 +3,8 @@
 development:
   adapter: mysql2
   database: music_exchange_dev
-  username: music
-  password: music 
+  username: 
+  password:  
   pool: 5
   timeout: 5000
 
@@ -14,15 +14,15 @@ development:
 test:
   adapter: mysql2
   database: music_exchange_test
-  username: music
-  password: music
+  username: 
+  password: 
   pool: 5
   timeout: 5000
 
 production:
   adapter: mysql2
   database: music_exchange
-  username: music
-  password: music
+  username: 
+  password:
   pool: 5
   timeout: 5000
