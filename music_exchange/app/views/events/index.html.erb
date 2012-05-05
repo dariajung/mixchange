@@ -1,4 +1,4 @@
 <h1>Listing Events</h1>
 
 <%= render :partial => "event", :collection => @events %>
-<p></p><%= link_to 'New Event', new_event_path %> 
+<p></p><%= (@current_user.role == true ? (link_to 'New Event', new_event_path): "") %> 

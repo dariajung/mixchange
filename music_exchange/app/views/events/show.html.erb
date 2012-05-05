@@ -25,7 +25,11 @@
 	<% end %>
 <br>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %> |
-<%= link_to 'Suggest Music', suggest_event_url(@event) %> |
+<b>Top Three Ranked Music</b><br>
+  <%= @event.top_three_rankings %>
+<br>
+<br>
+<%= (@current_user.role == true ? (link_to 'Edit', edit_event_path(@event)): "") %> 
+<%= link_to 'Back', events_path %> 
+<%= link_to 'Suggest Music', suggest_event_url(@event) %> 
 <%= link_to 'Rank Music', rank_event_url(@event) %> 

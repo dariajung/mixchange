@@ -6,11 +6,12 @@
             <ul class="nav pull-right">
               <li><%= (@current_user ? (link_to @current_user.email, '/users/' + session[:user_id].to_s + '/edit') : "") %></li>
               <li><%= (@current_user ? (link_to "Logout", '/logout'): "" ) %></li>
-              <li><%= link_to "Sign Up", '/signup' %><li>
+              <li><%= (!@current_user ? (link_to "Sign Up", '/signup'): "") %><li>
             </ul>
             <ul class="nav pull-left">
+             <li><%= image_tag "footlogo.png" %></li>
            	 <li><%= link_to "Events", '/events' %></li>
-             <li><%= link_to "CDs", '/cds' %></li>
+             <li><%= link_to "CDs", '/cds'%></li>
              <li><%= link_to "Users", '/users' %></li>
             </ul>
           </nav>

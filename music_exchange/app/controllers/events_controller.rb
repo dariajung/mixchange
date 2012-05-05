@@ -23,7 +23,7 @@ class EventsController < ApplicationController
 
         if ranking
           if params[:suggestions][suggestion.id.to_s]
-            ranking.position = params[:suggestions][suggestion.id_to_s]
+            ranking.position = params[:suggestions][suggestion.id.to_s]
           else
             ranking.position = 0
           end

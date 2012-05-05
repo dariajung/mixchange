@@ -3,8 +3,8 @@
 <p></p><b>Start:</b> <%= event.start_time %>
 <p></p><b>End:</b> <%= event.end_time %>
 <p></p>
-<%= link_to 'Edit', edit_event_path(event) %> |
-<%= link_to 'Delete', event_path(event), confirm: 'Are you sure?', method: :delete %> |
-<%= link_to 'Suggest Music', suggest_event_url(event)%> |
+<%= (@current_user.role == true ? (link_to 'Edit', edit_event_path(event)): "") %> 
+<%= (@current_user.role == true ? (link_to 'Delete', event_path(event), confirm: 'Are you sure?', method: :delete): "") %> 
+<%= link_to 'Suggest Music', suggest_event_url(event)%> 
 <%= link_to 'Rank Music', rank_event_url(event)%>
 <br></br>

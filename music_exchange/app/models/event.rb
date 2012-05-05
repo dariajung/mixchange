@@ -12,8 +12,21 @@ class Event < ActiveRecord::Base
   	end
   
   	def top_three_rankings
-
-  	end
+  		cds = {}
+		self.class.send(:define_method, :top_three_rankings) do |cd|
+			title = cd.album_name
+			score = cd.position
+				if cds.has_key?(title) 
+					cds[title] += score
+				else
+				cds[title] = score
+			end
+			order = cds.sort{|a,b| a[1]<=>b[1]}
+			order[0..2].each do |elem|
+			
+		end
+	end
+	end
 
 	validate :location_cannot_be_blank
 	def location_cannot_be_blank
@@ -35,5 +48,5 @@ class Event < ActiveRecord::Base
 			errors.add(:end_time, "What time does the event end?")
 		end
 	end
-
 end
+
