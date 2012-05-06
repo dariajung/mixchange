@@ -6,26 +6,21 @@ class Event < ActiveRecord::Base
 	has_many :invitations, :dependent => :destroy
 	has_many :users, :through => :invitations
 
-
 	def rankings(user)
    	 return Ranking.where(:suggestion_id => self.suggestions.collect(&:id), :guest_id => user.id)
   	end
   
   	def top_three_rankings
   		cds = {}
-		self.class.send(:define_method, :top_three_rankings) do |cd|
-			title = cd.album_name
-			score = cd.position
-				if cds.has_key?(title) 
-					cds[title] += score
-				else
-				cds[title] = score
-			end
-			order = cds.sort{|a,b| a[1]<=>b[1]}
-			order[0..2].each do |elem|
-			
-		end
-	end
+  		all_suggestions = self.suggestions
+  		for suggestion in all_suggestions
+  			suggestion.rankings.each do |ranking|
+  				cds[suggestion.cd_id] = cds[suggestion.cd_id].to_i + Integer(ranking.position)
+  			end
+  		end
+  		order = cds.sort{|a,b| a[1]<=>b[1]}
+  		top = [Cd.find_by_id(order[0][0]).album_name, Cd.find_by_id(order[1][0]).album_name, Cd.find_by_id(order[2][0]).album_name]
+  		return top
 	end
 
 	validate :location_cannot_be_blank

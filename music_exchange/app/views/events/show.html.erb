@@ -26,7 +26,8 @@
 <br>
 
 <b>Top Three Ranked Music</b><br>
-  <%= @event.top_three_rankings %>
+<%= @event.top_three_rankings %>
+
 <br>
 <br>
 <%= (@current_user.role == true ? (link_to 'Edit', edit_event_path(@event)): "") %> 
