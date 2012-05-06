@@ -16,24 +16,15 @@ class EventsController < ApplicationController
   def rank
     @event = Event.find(params[:id])
 
-    if params[:suggestions]
-      for suggestion in @event.suggestions
+    if params[:item]
+        params[:item].each_with_index do |id, index|
+         ranking = Ranking.find(id)
+         ranking.position = index + 1
+         ranking.save
+       end
+     end
 
-        ranking = Ranking.where(:suggestion_id => suggestion.id, :user_id => current_user.id).first
-
-        if ranking
-          if params[:suggestions][suggestion.id.to_s]
-            ranking.position = params[:suggestions][suggestion.id.to_s]
-          else
-            ranking.position = 0
-          end
-          ranking.save
-        else
-          ranking = Ranking.create(:suggestion_id => suggestion.id, :user_id => current_user.id, :position => params[:suggestions][suggestion.id.to_s])
-        end
-      end
-      redirect_to event_path(@event)
-    end
+    @rankings = @event.rankings(current_user)
   end
 
   def suggest

@@ -1,22 +1,44 @@
 <h1><%= link_to @event.event_name, @event %></h1>
+<h3>R A N K ♫ S U G G E S T E D ♫ M U S I C </h3>
 <%= semantic_form_for :suggestions, :url => rank_event_url(@event), :html => {:method => :post} do |f| %>
 
-	R A N K ♫ S U G G E S T E D ♫ M U S I C <br ></ br ><br>
-	<%= f.inputs do %>
-		<% @event.suggestions.each do |suggestion| %>
+<div class="demo">
+<ul id="sort-list">
+	<% @rankings.each do |rank| %>
+	<li id = "item_<%=rank.id%>"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><%= rank.suggestion.cd.album_name %></li>
+	<% end %>
+</div>
+<meta charset="utf-8">
+	<style>
+	#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+	#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+	#sortable li span { position: absolute; margin-left: -1.3em; }
+	</style>
+	<script>
+	$(function() {
+		$( "#sort-list" ).sortable();
+		$( "#sort-list" ).disableSelection();
+	});
 
-			<% ranking = Ranking.where(:suggestion_id => suggestion.id, :user_id => current_user.id).first %>
+	$("#sort-list").sortable({
+		dropOnEmpty: false,
+		items: 'li',
+	update:function(){
+	$.ajax({
+		type: 'post',
+		data: $("#sort-list").sortable('serialize') + '&authenticity_token=' + encodeURIComponent('<%form_authenticity_token %>'),
+		datatype: 'script',
+		complete: function(request){
+			$("#sort-list").effect('highlight');
+		},
+		url: '<%= rank_event_url(@event) %>'});
+		}
+		});
 
-			<%= f.input "#{suggestion.id}", :as => :select, :collection => 1..@event.suggestions.length, :selected => ranking.nil? ? '' : ranking.position, :label => suggestion.cd.album_name, :include_blank => false %>
-			<% end %>
-		<% end %>
+	</script>
 
-		<%= f.actions do %>
-			<%= f.action :submit, :as => :button, :label => "Rank" %>
-			<% end %>
-
-		<% end %>
-		<br>
+<br>
+<% end %>
 
 <%= link_to 'Back', events_path %>
 

@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
 	has_many :users, :through => :invitations
 
 	def rankings(user)
-   	 return Ranking.where(:suggestion_id => self.suggestions.collect(&:id), :guest_id => user.id)
+   	 return Ranking.where(:suggestion_id => self.suggestions.collect(&:id), :user_id => user.id).order(:position)
   	end
   
   	def top_three_rankings
