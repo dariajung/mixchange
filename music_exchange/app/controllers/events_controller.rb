@@ -19,6 +19,7 @@ class EventsController < ApplicationController
     if params[:item]
         params[:item].each_with_index do |id, index|
          ranking = Ranking.find(id)
+         #if ranking.nil?
          ranking.position = index + 1
          ranking.save
        end

@@ -19,9 +19,13 @@ class Event < ActiveRecord::Base
   			end
   		end
   		order = cds.sort{|a,b| a[1]<=>b[1]}
-  		top = [Cd.find_by_id(order[0][0]).album_name, Cd.find_by_id(order[1][0]).album_name, Cd.find_by_id(order[2][0]).album_name]
-  		return top
-	end
+  		if !order.blank?
+  			top = [Cd.find_by_id(order[0][0]).album_name, Cd.find_by_id(order[1][0]).album_name, Cd.find_by_id(order[2][0]).album_name]
+  			return top
+  		end
+  	else return ""
+  	end	
+	
 
 	validate :location_cannot_be_blank
 	def location_cannot_be_blank
